@@ -112,11 +112,11 @@ class Git(VCS):
 
     def getCommitId(self):
         out, err = self._execCommands([self._gitCmd('rev-parse', 'HEAD')])
-        return out.strip()
+        return out.strip().decode('utf-8')
 
     def getDescription(self):
         out, err = self._execCommands([self._gitCmd('describe', '--always', '--tags')])
-        return out.strip()
+        return out.strip().decode('utf-8')
 
     def workingDirectory(self):
         return self.worktree
